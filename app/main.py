@@ -1,12 +1,18 @@
+from contextlib import asynccontextmanager
 import uvicorn
 from fastapi import FastAPI
-from app.core.database import Base, engine
+from app.core import Base, db_helper
 from app.ext_interdction.api import users
 
-app = FastAPI(title="World Pages Creator")
 
-# Создаём таблицы
-Base.metadata.create_all(bind=engine)
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    async with db_helper.engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
+    yield
+
+
+app = FastAPI(title="World Pages Creator", lifespan=lifespan)
 
 # Роуты
 app.include_router(users.router)

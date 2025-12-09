@@ -1,11 +1,11 @@
-from sqlalchemy import Column, Integer, String, Text
+from sqlalchemy.orm import Mapped, mapped_column
 from app.core.database import Base
 
 
 class UserModel(Base):
     __tablename__ = "users"
 
-    id = Column(Integer, primary_key=True)
-    nickname = Column(String, nullable=False)
-    bio = Column(Text, nullable=True)
-    avatar_url = Column(String, nullable=True)
+    name: Mapped[str] = mapped_column(nullable=False)
+    email: Mapped[str] = mapped_column(nullable=False)
+    bio: Mapped[str] = mapped_column(nullable=True)
+    avatar_url: Mapped[str] = mapped_column(nullable=True)
