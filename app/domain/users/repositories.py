@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 from typing import Optional, List
 from .entities import User
 
+
 class IUserRepository(ABC):
 
     @abstractmethod
