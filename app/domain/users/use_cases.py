@@ -1,4 +1,3 @@
-from typing import List
 from .repositories import IUserRepository
 from .entities import User
 

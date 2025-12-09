@@ -1,0 +1,98 @@
+app/
+├── core/
+│   ├── config.py
+│   └── database.py
+│
+├── domain/
+│   ├── users/
+│   │   ├── entities.py
+│   │   ├── repositories.py
+│   │   └── use_cases.py
+│   ├── projects/
+│   │   ├── entities.py
+│   │   ├── repositories.py
+│   │   └── use_cases.py
+│   ├── posts/
+│   │   ├── entities.py
+│   │   ├── repositories.py
+│   │   └── use_cases.py
+│   └── comments/
+│       ├── entities.py
+│       ├── repositories.py
+│       └── use_cases.py
+│
+├── infrastructure/
+│   ├── repositories/
+│   │   ├── user_repo_impl.py
+│   │   ├── project_repo_impl.py
+│   │   ├── post_repo_impl.py
+│   │   └── comment_repo_impl.py
+│   └── models/
+│       ├── user_model.py
+│       ├── project_model.py
+│       ├── post_model.py
+│       └── comment_model.py
+│
+├── presentation/
+│   ├── api/
+│   │   ├── users.py
+│   │   ├── projects.py
+│   │   ├── posts.py
+│   │   └── comments.py
+│   └── schemas/
+│       ├── user_schema.py
+│       ├── project_schema.py
+│       ├── post_schema.py
+│       └── comment_schema.py
+│
+├── main.py
+└── requirements.txt
+
+
+Что уже есть:
+
+✔ Чистая архитектура
+✔ Репозитории
+✔ Юзкейсы
+✔ FastAPI слой
+✔ SQLAlchemy + SQLite
+✔ Полноценная структура проекта
+
+Дополнить:
+
+— API для проектов
+— API для постов и комментариев
+— Модели для карт (глобальных и локальных)
+— JWT-авторизацию
+— WebSockets для ленты
+— Пример фронтенд-клиента?
+
+
+
+project/
+├── app/                       # Backend (FastAPI + Clean Architecture)
+│   ├── core/
+│   ├── domain/
+│   ├── infrastructure/
+│   ├── presentation/
+│   └── main.py
+│
+├── frontend/                   # Frontend (HTML+CSS)
+│   ├── static/
+│   │   ├── css/
+│   │   │   ├── style.css
+│   │   ├── img/
+│   ├── templates/
+│   │   ├── index.html         # Главная (последние проекты)
+│   │   ├── user.html          # Страница пользователя
+│   │   ├── project.html       # Страница проекта
+│   └── README.md
+│
+└── requirements.txt
+
+
+✅ Генерацию HTML через Jinja2 в FastAPI
+✅ Подтягивание данных из API
+✅ Поддержку загрузки аватаров и файлов
+✅ Интерфейс для создания проектов / постов
+✅ Карты (глобальные + локальные) с визуализацией
