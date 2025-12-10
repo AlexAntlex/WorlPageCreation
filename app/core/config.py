@@ -1,7 +1,5 @@
 import os
-
 from pydantic_settings import BaseSettings
-from pathlib import Path
 
 # BASE_DIR = Path(__file__).resolve().parent -> не работает с папкой data
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))

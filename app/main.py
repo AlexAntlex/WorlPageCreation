@@ -1,8 +1,8 @@
 from contextlib import asynccontextmanager
 import uvicorn
 from fastapi import FastAPI
-from app.core import Base, db_helper
-from app.ext_interdction.api import users
+from app.core import Base, db_helper, config
+from app.api_v1.crud import router as router
 
 
 @asynccontextmanager
@@ -13,9 +13,7 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="World Pages Creator", lifespan=lifespan)
-
-# Роуты
-app.include_router(users.router)
+app.include_router(router=router)
 
 
 @app.get("/")

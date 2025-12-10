@@ -4,8 +4,8 @@ from typing import Optional, List
 
 @dataclass
 class Project:
-    id: Optional[int]
+    id: int
     title: str
     description: Optional[str]
     owner_id: int
-    members: List[int]
+    members: List[int] = None

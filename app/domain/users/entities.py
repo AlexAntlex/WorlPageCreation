@@ -5,9 +5,9 @@ from typing import Optional, List
 
 @dataclass
 class User:
-    id: Optional[int]
+    id: int
     email: EmailStr
-    nickname: str
+    name: str
     bio: Optional[str]
     avatar_url: Optional[str]
     projects: List[int] = None  # id проектов
