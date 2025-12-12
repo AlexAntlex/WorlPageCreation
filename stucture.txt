@@ -1,98 +1,70 @@
 app/
 ├── core/
+│   ├── __init__.py
+│   ├── db_helper.py
 │   ├── config.py
 │   └── database.py
 │
+├── data/
+│   └── app.sqlite3
+│
 ├── domain/
 │   ├── users/
-│   │   ├── entities.py
-│   │   ├── repositories.py
-│   │   └── use_cases.py
+│   │   └── entities.py
 │   ├── projects/
-│   │   ├── entities.py
-│   │   ├── repositories.py
-│   │   └── use_cases.py
+│   │   └── entities.py
 │   ├── posts/
-│   │   ├── entities.py
-│   │   ├── repositories.py
-│   │   └── use_cases.py
+│   │   └── entities.py
 │   └── comments/
-│       ├── entities.py
-│       ├── repositories.py
-│       └── use_cases.py
+│       └── entities.py
 │
-├── infrastructure/
-│   ├── repositories/
-│   │   ├── user_repo_impl.py
-│   │   ├── project_repo_impl.py
-│   │   ├── post_repo_impl.py
-│   │   └── comment_repo_impl.py
+├── api_v1/
+│   ├── crud/
+│   │   ├── __init__.py
+│   │   ├── user.py
+│   │   ├── project.py
+│   │   ├── post.py
+│   │   └── comment.py
+│   ├──schemas/
+│   │   ├── user_schema.py
+│   │   ├── project_schema.py
+│   │   ├── post_schema.py
+│   │   └── comment_schema.py
+│   └──views/
+│       ├── user.py
+│       ├── project.py
+│       ├── post.py
+│       └── comment.py
+│
+├── structure/
 │   └── models/
 │       ├── user_model.py
 │       ├── project_model.py
 │       ├── post_model.py
 │       └── comment_model.py
 │
-├── presentation/
-│   ├── api/
-│   │   ├── users.py
-│   │   ├── projects.py
-│   │   ├── posts.py
-│   │   └── comments.py
-│   └── schemas/
-│       ├── user_schema.py
-│       ├── project_schema.py
-│       ├── post_schema.py
-│       └── comment_schema.py
+├──fronted/
+│   ├── static/
+│   │   ├── css/
+│   │   │   ├──style.css
+│   │   └── img/
+│   └──templates/
+│       ├── index.html
+│       ├── project.html
+│       └──user.html
 │
 ├── main.py
 └── requirements.txt
 
 
-Что уже есть:
-
-✔ Чистая архитектура
-✔ Репозитории
-✔ Юзкейсы
-✔ FastAPI слой
-✔ SQLAlchemy + SQLite
-✔ Полноценная структура проекта
-
-Дополнить:
-
-— API для проектов
-— API для постов и комментариев
+Нужно сделать:
 — Модели для карт (глобальных и локальных)
 — JWT-авторизацию
 — WebSockets для ленты
 — Пример фронтенд-клиента?
 
-
-
-project/
-├── app/                       # Backend (FastAPI + Clean Architecture)
-│   ├── core/
-│   ├── domain/
-│   ├── infrastructure/
-│   ├── presentation/
-│   └── main.py
-│
-├── frontend/                   # Frontend (HTML+CSS)
-│   ├── static/
-│   │   ├── css/
-│   │   │   ├── style.css
-│   │   ├── img/
-│   ├── templates/
-│   │   ├── index.html         # Главная (последние проекты)
-│   │   ├── user.html          # Страница пользователя
-│   │   ├── project.html       # Страница проекта
-│   └── README.md
-│
-└── requirements.txt
-
-
-✅ Генерацию HTML через Jinja2 в FastAPI
-✅ Подтягивание данных из API
-✅ Поддержку загрузки аватаров и файлов
-✅ Интерфейс для создания проектов / постов
-✅ Карты (глобальные + локальные) с визуализацией
+- Генерацию HTML через Jinja2 в FastAPI
+- одтягивание данных из API
+- Поддержку загрузки аватаров и файлов
+- Интерфейс для создания проектов / постов
+- Карты (глобальные + локальные) с визуализацией
