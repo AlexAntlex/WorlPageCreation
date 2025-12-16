@@ -1,7 +1,7 @@
-from fastapi import APIRouter, HTTPException, status, Depends
+from fastapi import APIRouter, status, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.api_v1.crud import users as c_users
+from app.api_v1.dependecies import user_by_id
 from app.core import db_helper
 from app.api_v1.crud import users
 from app.api_v1.schemas.user_schema import (
@@ -10,7 +10,6 @@ from app.api_v1.schemas.user_schema import (
     UserResponse,
     UserUpdate,
 )
-from app.api_v1.dependecies import user_by_id
 from app.structure.models.user_model import User
 
 router = APIRouter(prefix="/user", tags=["Users"])
@@ -46,7 +45,7 @@ async def update_user(
     user: User = Depends(user_by_id),
     session: AsyncSession = Depends(db_helper.scoped_session_dependency),
 ):
-    return await c_users.update_user(
+    return await users.update_user(
         session=session,
         user=user,
         user_update=user_update,
@@ -58,4 +57,4 @@ async def delete_user(
     user: User = Depends(user_by_id),
     session: AsyncSession = Depends(db_helper.scoped_session_dependency),
 ) -> None:
-    return await c_users.delete_user(session=session, user=user)
+    return await users.delete_user(session=session, user=user)

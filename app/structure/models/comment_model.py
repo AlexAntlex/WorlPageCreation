@@ -4,7 +4,7 @@ from app.core.database import Base
 from app.structure.models.mixins import PostRelationMixin, UserRelationMixin
 
 
-class Comment(UserRelationMixin, Base):
+class Comment(UserRelationMixin, PostRelationMixin, Base):
     _user_back_populates = "comments"
     _post_back_populates = "comments"
 

@@ -1,4 +1,6 @@
-from fastapi import APIRouter, HTTPException, status, Depends
+from typing import Annotated
+
+from fastapi import APIRouter, HTTPException, status, Depends, Path
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core import db_helper
@@ -27,13 +29,12 @@ async def create_post(
     return await posts.create_post(session=session, create_post=create_post)
 
 
-@router.get("/{user_id}/{project_id}/", response_model=PostBase)
+@router.get("/{post_id}/", response_model=PostBase)
 async def get_one_post(
-    user_id: int,
-    project_id: int,
+    post_id: Annotated[int, Path],
     session: AsyncSession = Depends(db_helper.scoped_session_dependency),
 ):
-    project = await posts.get_one_post(session=session, user_id=user_id, project_id=project_id)
+    project = await posts.get_one_post(session=session, post_id=post_id)
     if project is not None:
         return project
     raise HTTPException(
