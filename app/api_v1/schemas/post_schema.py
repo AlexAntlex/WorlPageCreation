@@ -1,9 +1,9 @@
-from pydantic import BaseModel, EmailStr, ConfigDict
+from pydantic import BaseModel, ConfigDict
 
 
 class PostBase(BaseModel):
-    id: int
-    project_id: int
+
+    # project_id: int
     author_id: int
     datatime: str
     content_type: str  # "photo", "video", "audio", "file", "text"
@@ -12,6 +12,10 @@ class PostBase(BaseModel):
 
 
 class CreatePost(PostBase):
+    pass
+
+
+class UpdatePost(CreatePost):
     pass
 
 

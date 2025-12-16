@@ -11,9 +11,9 @@ from app.api_v1.schemas.user_schema import (
     UserUpdate,
 )
 from app.api_v1.dependecies import user_by_id
-from app.structure.models.user_model import UserModel
+from app.structure.models.user_model import User
 
-router = APIRouter(prefix="/profiles", tags=["Users"])
+router = APIRouter(prefix="/user", tags=["Users"])
 
 
 @router.get("/", response_model=list[UserResponse])
@@ -33,17 +33,17 @@ async def create_user(
     return await users.create_user(session=session, user_create=user_create)
 
 
-@router.get("/user/{user_id}/", response_model=UserBase)
+@router.get("/{user_id}/", response_model=UserBase)
 async def get_one_user(
-    user: UserModel = Depends(user_by_id),
+    user: User = Depends(user_by_id),
 ):
     return user
 
 
-@router.patch("/update/user/{user_id}/")
+@router.patch("/update/{user_id}/")
 async def update_user(
     user_update: UserUpdate,
-    user: UserModel = Depends(user_by_id),
+    user: User = Depends(user_by_id),
     session: AsyncSession = Depends(db_helper.scoped_session_dependency),
 ):
     return await c_users.update_user(
@@ -53,9 +53,9 @@ async def update_user(
     )
 
 
-@router.delete("/delete/user/{user_id}/", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete("/delete/{user_id}/", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_user(
-    user: UserModel = Depends(user_by_id),
+    user: User = Depends(user_by_id),
     session: AsyncSession = Depends(db_helper.scoped_session_dependency),
 ) -> None:
     return await c_users.delete_user(session=session, user=user)
