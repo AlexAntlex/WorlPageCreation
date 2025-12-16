@@ -1,4 +1,4 @@
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, EmailStr, ConfigDict
 
 
 class ProjectBase(BaseModel):
@@ -12,9 +12,8 @@ class CreateProject(ProjectBase):
     pass
 
 
-class ProjectUpdate(CreateProject):
-    title: str | None = None
-    description: str | None = None
+class UpdateProject(CreateProject):
+    description: str = str | None
 
 
 class ProjectResponse(ProjectBase):

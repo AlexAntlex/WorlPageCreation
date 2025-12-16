@@ -11,7 +11,7 @@ Delete
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.engine import Result
-from app.api_v1.schemas.project_schema import CreateProject, ProjectUpdate
+from app.api_v1.schemas.project_schema import CreateProject, UpdateProject
 from app.structure.models.project_model import Project
 
 
@@ -36,7 +36,7 @@ async def get_one_project(session: AsyncSession, project_id: int) -> Project | N
 
 
 async def update_project(
-    session: AsyncSession, project: Project, project_update: ProjectUpdate
+    session: AsyncSession, project: Project, project_update: UpdateProject
 ) -> Project:
     project_update.model_dump(exclude_unset=True)
     for name, value in project_update.model_dump().items():
