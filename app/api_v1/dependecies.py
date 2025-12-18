@@ -23,14 +23,14 @@ async def user_by_id(
     )
 
 
-async def project_by_id(
-    project_id: Annotated[int, Path],
-    session: AsyncSession = Depends(db_helper.scoped_session_dependency),
-) -> Project:
-    project = await projects.get_one_project(session=session, project_id=project_id)
-    if project is not None:
-        return project
-    raise HTTPException(
-        status_code=status.HTTP_404_NOT_FOUND,
-        detail="Project not found",
-    )
+# async def project_by_id(
+#     project_id: Annotated[int, Path],
+#     session: AsyncSession = Depends(db_helper.scoped_session_dependency),
+# ) -> Project:
+#     project = await projects.get_one_project(session=session, project_id=project_id)
+#     if project is not None:
+#         return project
+#     raise HTTPException(
+#         status_code=status.HTTP_404_NOT_FOUND,
+#         detail="Project not found",
+#     )

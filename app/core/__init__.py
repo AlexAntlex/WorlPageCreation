@@ -6,6 +6,7 @@ __all__ = (
     "Project",
     "Post",
     "Comment",
+    "UserProjectAssociation",
 )
 
 from .database import Base
@@ -14,3 +15,4 @@ from .db_helper import db_helper, DataBaseHelper
 from app.structure.models.project_model import Project
 from app.structure.models.post_model import Post
 from ..structure.models.comment_model import Comment
+from ..structure.models.users_projects_association import UserProjectAssociation

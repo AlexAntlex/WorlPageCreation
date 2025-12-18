@@ -43,7 +43,7 @@ async def get_one_project(
 
 
 @router.patch("/update/{project_id}/")
-async def update_user(
+async def update_project(
     project_update: UpdateProject,
     project_id: int,
     session: AsyncSession = Depends(db_helper.scoped_session_dependency),

@@ -13,7 +13,7 @@ class CreateProject(ProjectBase):
 
 
 class UpdateProject(CreateProject):
-    description: str = str | None
+    description: str | None = None
 
 
 class ProjectResponse(ProjectBase):
