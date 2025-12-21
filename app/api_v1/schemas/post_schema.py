@@ -16,7 +16,9 @@ class CreatePost(PostBase):
 
 
 class UpdatePost(CreatePost):
-    pass
+
+    content_url: str
+    text: str
 
 
 class PostResponse(PostBase):

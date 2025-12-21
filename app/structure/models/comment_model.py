@@ -1,4 +1,6 @@
-from sqlalchemy import Text
+from datetime import datetime
+
+from sqlalchemy import Text, func
 from sqlalchemy.orm import Mapped, mapped_column
 from app.core.database import Base
 from app.structure.models.mixins import PostRelationMixin, UserRelationMixin
@@ -10,3 +12,7 @@ class Comment(UserRelationMixin, PostRelationMixin, Base):
 
     text: Mapped[str] = mapped_column(Text, nullable=False)
     content_url: Mapped[str] = mapped_column(nullable=True)
+    created_at: Mapped[datetime] = mapped_column(
+        server_default=func.now(),
+        default=datetime.now,
+    )

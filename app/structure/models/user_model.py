@@ -18,6 +18,7 @@ class User(Base):
     email: Mapped[str] = mapped_column(nullable=False, unique=True)
     bio: Mapped[str] = mapped_column(nullable=True)
     avatar_url: Mapped[str] = mapped_column(nullable=True)
+    hashed_password: Mapped[str] = mapped_column(nullable=True)
     created_at: Mapped[datetime] = mapped_column(
         server_default=func.now(),
         default=datetime.now,
